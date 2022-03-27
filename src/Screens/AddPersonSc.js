@@ -34,7 +34,8 @@ export default function AddPersonSc(props) {
     }
 
     const ChooseLocationLabel = `${location?`${location.latitude},${location.longitude}`:"Konum Seç"}`
-
+    const ButtonDisable = name==""||lastname==""||address==""||!location
+    
     return (
         <View style={[styles.container]}>
             <Appbar.Header>
@@ -71,12 +72,13 @@ export default function AddPersonSc(props) {
                     </TouchableOpacity>
                 </ScrollView>
                 <View>
-                    <Button onPress={Save} label="Kaydet"/>
+                    <Button disable={ButtonDisable} onPress={Save} label="Kaydet"/>
                 </View>
             </SafeAreaView>
         </View>
     )
 }
+
 const styles = StyleSheet.create({
     container:{
         flex:1,

@@ -6,7 +6,7 @@ export default function Button({ onPress, label, style,disable }) {
     const { colors } = useTheme()
 
     return (
-        <TouchableOpacity style={[styles.container,{backgroundColor:disable?colors.disabled:colors.primary,...style}]} onPress={onPress}>
+        <TouchableOpacity disabled={disable} style={[styles.container,{backgroundColor:disable?colors.disabled:colors.primary,...style}]} onPress={onPress}>
             <Text style={[styles.label,{color:colors.surface}]}>{label}</Text>
         </TouchableOpacity>
     )
