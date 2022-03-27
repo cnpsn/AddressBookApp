@@ -19,7 +19,6 @@ export default function PersonsSc(props) {
     setUserList(Result)
   }
 
-
   useEffect(() => {GET()},[])
 
   return (
@@ -58,7 +57,8 @@ const styles = StyleSheet.create({
     flex:1
   },
   body:{
-    flex:1
+    flex:1,
+    paddingBottom:100
   },
   cardContainer:{
     flexDirection:"row",

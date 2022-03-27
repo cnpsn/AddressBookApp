@@ -1,5 +1,5 @@
 import React,{useContext,useState,useEffect} from 'react'
-import { View, Text, StyleSheet,ScrollView,TouchableOpacity,SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet,ScrollView,TouchableOpacity,SafeAreaView,Alert} from 'react-native'
 import { Appbar, useTheme, Avatar,TextInput } from 'react-native-paper';
 import { GlobalContext } from '../Contexts/GlobalContext';
 import { UserSchema,LocationSchema } from '../RealmSchemas/UserTask';
@@ -8,6 +8,7 @@ import Realm from "realm";
 // ICONS 
 import Edit from '../Assets/SvgIconsComponents/Edit'
 import MapPin from '../Assets/SvgIconsComponents/MapPin'
+import Trash from '../Assets/SvgIconsComponents/Trash'
 
 const TextInputList = [
     {value:"name",label:"İsim"},
@@ -65,6 +66,23 @@ export default function EditPersonSc(props) {
         setUserList(UserList)
         setisEdit(false)
     }
+8
+    const CheckDeletePerson = () => {
+        Alert.alert("Biraz bekle.","Bu kişiyi silmek istediğinize emin misiniz ?",[
+            {text:"Hayır, İptal",onPress:() => null},
+            {text:"Evet, Sil",onPress:() => DeletePerson()},
+        ])
+    }
+    const DeletePerson = async() => {
+        goBack()
+        const realm = await Realm.open({schema: [UserSchema,LocationSchema]});
+        const User = realm.objectForPrimaryKey("User", userID)
+        realm.write(() => {
+            realm.delete(User);
+        });
+        const UserList = realm.objects("User")
+        setUserList(UserList)
+    }
 
     useEffect(() => {
         const ContextDATA = UserList.find(el => el._id.toString() == userID.toString())
@@ -103,6 +121,10 @@ export default function EditPersonSc(props) {
                         <MapPin color={colors.primary}/>
                         <Text numberOfLines={1} maxFontSizeMultiplier={1} style={[styles.ChooseLocationLabel,{color:colors.primary}]}>{ChooseLocationLabel}</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={CheckDeletePerson} style={[styles.deletePersonView]}>
+                        <Trash width={22} height={22} color={colors.danger}/>
+                        <Text style={[styles.title,{color:colors.danger}]}>Kişiyi Sil</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
             <SafeAreaView>
@@ -139,5 +161,16 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         marginHorizontal:8,
         flex:1
+    },
+    deletePersonView:{
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center",
+        marginVertical:8
+    },
+    title:{
+        fontSize:15,
+        fontWeight:"bold",
+        marginHorizontal:6
     }
 })

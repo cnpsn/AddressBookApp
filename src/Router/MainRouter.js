@@ -18,7 +18,7 @@ export default function MainRouter() {
     // tabBar={props => <CustomizedTabbar {...props} />}
     const BottomTab = () => {
         return (
-            <Tab.Navigator screenOptions={{ headerShown: false }} >
+            <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={props => <CustomizedTabbar {...props} />}>
                 <Tab.Screen name="PersonsSc" component={PersonsSc} />
                 <Tab.Screen name="FindMyFriendSc" component={FindMyFriendSc} />
                 <Tab.Screen name="SettingsSc" component={SettingsSc} />

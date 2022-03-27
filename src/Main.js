@@ -11,7 +11,8 @@ const theme = {
       surface:"#FFF",
       black:"#4A4453",
       gray:"#7B7485",
-      LightGrey:"#AFA8BA"
+      LightGrey:"#AFA8BA",
+      danger:"#B1000E"
     },
 };
 
