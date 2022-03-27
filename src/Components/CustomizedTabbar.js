@@ -48,7 +48,7 @@ export default function CustomizedTabbar({ state, descriptors, navigation }) {
         };
 
         return (
-          <View key={index} style={[styles.mainItemContainer, { borderLeftWidth: label == "SettingsSc" ? 3 : 0 }]}>
+          <View key={index} style={[styles.mainItemContainer, { borderColor:colors.LightGrey, borderLeftWidth: label == "SettingsSc" ? 3 : 0 }]}>
             <Pressable
               onPress={onPress}
               style={{ backgroundColor: isFocused ? colors.primary : colors.primary2, borderRadius: 20, }}>
@@ -77,6 +77,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     borderRadius: 1,
-    borderColor: "#fff",
   },
 })

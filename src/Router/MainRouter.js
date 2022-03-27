@@ -1,11 +1,13 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import PersonsSc from '../Screens/PersonsSc'
-import FindMyFriendSc from '../Screens/FindMyFriendSc'
-import SettingsSc from '../Screens/SettingsSc'
+import { NavigationContainer } from '@react-navigation/native';
 import CustomizedTabbar from '../Components/CustomizedTabbar';
+import FindMyFriendSc from '../Screens/FindMyFriendSc'
+import AddPersonSc from '../Screens/AddPersonSc'
+import SettingsSc from '../Screens/SettingsSc'
+import PersonsSc from '../Screens/PersonsSc'
+import MapSc from '../Screens/MapSc'
 
 
 export default function MainRouter() {
@@ -26,6 +28,8 @@ export default function MainRouter() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="BottomTab" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="BottomTab" component={BottomTab} />
+                <Stack.Screen name="AddPersonSc" component={AddPersonSc} />
+                <Tab.Screen name="MapSc" component={MapSc} />
             </Stack.Navigator>
         </NavigationContainer>
     )

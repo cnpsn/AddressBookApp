@@ -1,10 +1,6 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import SettingsAmico from '../Assets/SvgIconsComponents/SettingsAmico'
 
 export default function SettingsSc() {
-  return (
-    <View>
-      <Text>SettingsSc</Text>
-    </View>
-  )
+  return <SettingsAmico width={"100%"} height={"100%"} />
 }
