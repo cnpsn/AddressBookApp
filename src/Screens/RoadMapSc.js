@@ -5,16 +5,15 @@ import MapView, { Marker } from 'react-native-maps';
 import Button from '../Components/Button';
 import Geolocation from '@react-native-community/geolocation';
 
-export default function MapSc(props) {
-    const { AddLocation } = props.route.params
+export default function RoadMapSc(props) {
+    const { friendLocation } = props.route.params
     const [pin, setpin] = useState(null)
-    const [targetPin, settargetPin] = useState(null)
+    const [targetPin, settargetPin] = useState(friendLocation)
 
     const goBack = () => props.navigation.goBack()
 
     const ButtonPress = () => {
-        AddLocation(targetPin)
-        goBack()
+        
     }
 
     useEffect(() => {
@@ -22,6 +21,7 @@ export default function MapSc(props) {
             const { latitude, longitude } = info.coords
             setpin({ latitude, longitude, latitudeDelta: 0.15, longitudeDelta: 0.15 })
         })
+        settargetPin(settargetPin)
     }, [])
 
     return (
@@ -46,7 +46,7 @@ export default function MapSc(props) {
                 }
             </MapView>
             <SafeAreaView>
-                <Button onPress={ButtonPress} disable={!targetPin} label="Bu Adresi Kullan" />
+                <Button onPress={ButtonPress} disable={!targetPin} label="Rota Oluştur" />
             </SafeAreaView>
         </View>
 

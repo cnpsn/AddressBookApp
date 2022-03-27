@@ -9,6 +9,7 @@ import AddPersonSc from '../Screens/AddPersonSc'
 import SettingsSc from '../Screens/SettingsSc'
 import PersonsSc from '../Screens/PersonsSc'
 import MapSc from '../Screens/MapSc'
+import RoadMapSc from '../Screens/RoadMapSc'
 
 
 export default function MainRouter() {
@@ -33,6 +34,7 @@ export default function MainRouter() {
                 <Stack.Screen name="AddPersonSc" component={AddPersonSc} />
                 <Stack.Screen name="BottomTab" component={BottomTab} />
                 <Stack.Screen name="MapSc" component={MapSc} />
+                <Stack.Screen name="RoadMapSc" component={RoadMapSc} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -1,14 +1,16 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import { View, StyleSheet,FlatList,TouchableOpacity,Text } from 'react-native'
 import { Appbar,useTheme,Avatar } from 'react-native-paper';
 import { GlobalContext } from '../Contexts/GlobalContext';
 // ICONS
 import MapPin from '../Assets/SvgIconsComponents/MapPin'
 
-export default function FindMyFriendSc() {
+export default function FindMyFriendSc(props) {
   const {UserList,setUserList} = useContext(GlobalContext)
   const {colors} = useTheme()
 
+  const goMap = (location) => props.navigation.navigate("RoadMapSc",{friendLocation:location})
+  
   return (
     <View style={[styles.container]}>
       <Appbar.Header>
@@ -18,9 +20,9 @@ export default function FindMyFriendSc() {
         <FlatList
         data={UserList}
         renderItem={({item}) => {
-          const {name,lastname,address,_id} = item
+          const {name,lastname,address,location} = item
           return(
-            <TouchableOpacity style={[styles.card,{backgroundColor:colors.surface}]}>
+            <TouchableOpacity onPress={() => goMap(location)} style={[styles.card,{backgroundColor:colors.surface}]}>
               <View style={[styles.cardAvatarView]}>
                 <Avatar.Text size={60} label={`${name[0]}${lastname[0]}`}/>
               </View>
