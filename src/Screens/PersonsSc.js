@@ -6,6 +6,7 @@ import GetUsersFromRealm from '../Methods/GetUsersFromRealm';
 // ICONS 
 import UserPlus from '../Assets/SvgIconsComponents/UserPlus'
 import ChevronRight from '../Assets/SvgIconsComponents/ChevronRight'
+import EmptyPana from '../Assets/SvgIconsComponents/EmptyPana'
 
 export default function PersonsSc(props) {
   const {UserList,setUserList} = useContext(GlobalContext)
@@ -29,6 +30,8 @@ export default function PersonsSc(props) {
       </Appbar.Header>
       <View style={[styles.body]}>
         <FlatList
+        contentContainerStyle={{flex:1}}
+        ListEmptyComponent={<EmptyPana width={"100%"} height={"100%"} />}
         data={UserList}
         renderItem={({item}) => {
           const {name,lastname,address,_id} = item

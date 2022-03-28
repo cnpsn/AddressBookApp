@@ -4,6 +4,7 @@ import { Appbar,useTheme,Avatar } from 'react-native-paper';
 import { GlobalContext } from '../Contexts/GlobalContext';
 // ICONS
 import MapPin from '../Assets/SvgIconsComponents/MapPin'
+import EmptyPana from '../Assets/SvgIconsComponents/EmptyPana'
 
 export default function FindMyFriendSc(props) {
   const {UserList,setUserList} = useContext(GlobalContext)
@@ -18,6 +19,8 @@ export default function FindMyFriendSc(props) {
       </Appbar.Header>
       <View style={[styles.body]}>
         <FlatList
+        contentContainerStyle={{flex:1}}
+        ListEmptyComponent={<EmptyPana width={"100%"} height={"100%"} />}
         data={UserList}
         renderItem={({item}) => {
           const {name,lastname,address,location} = item

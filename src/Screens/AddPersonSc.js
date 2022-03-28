@@ -62,7 +62,7 @@ export default function AddPersonSc(props) {
                     value={address}
                     onChangeText={t =>setaddress(t)}
                     mode="outlined"
-                    label="Adres"
+                    label="Adres Başlığı"
                     multiline
                     style={[styles.textInput,{backgroundColor:colors.surface}]}
                     />

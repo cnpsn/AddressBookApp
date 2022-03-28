@@ -13,7 +13,7 @@ import Trash from '../Assets/SvgIconsComponents/Trash'
 const TextInputList = [
     {value:"name",label:"İsim"},
     {value:"lastname",label:"Soyisim"},
-    {value:"address",label:"Adres"},
+    {value:"address",label:"Adres Başlığı"},
 ]
 
 export default function EditPersonSc(props) {

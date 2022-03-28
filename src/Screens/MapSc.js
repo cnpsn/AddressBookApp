@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, SafeAreaView } from 'react-native'
 import { Appbar } from 'react-native-paper';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker,PROVIDER_GOOGLE } from 'react-native-maps';
 import Button from '../Components/Button';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -31,6 +31,7 @@ export default function MapSc(props) {
                 <Appbar.Content title="Konumunu seç" subtitle="Arkadaşının konumunu seç" />
             </Appbar.Header>
             <MapView
+                provider={PROVIDER_GOOGLE}
                 initialRegion={pin}
                 onPress={e => settargetPin(e.nativeEvent.coordinate)}
                 style={{ flex: 1 }}
