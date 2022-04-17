@@ -19,6 +19,10 @@ $ useContext
 ```
 $ OSMR API
 ```
+#### Storage
+```
+$ Realm local database
+```
 #### Get Started 
 ```
 $ git clone https://github.com/cnpsn/AddressBookApp.git
